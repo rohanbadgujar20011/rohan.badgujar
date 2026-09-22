@@ -3,11 +3,11 @@
     "name": "Rohan Badgujar",
     "title": "Backend Engineer | Software Development Engineer",
     "tagline": "Building distributed systems that scale to millions of users",
-    "bio": "Backend Engineer with 2.8+ years of experience building and operating distributed microservices using Java, Spring Boot, and Apache Kafka at Jio Platforms, serving 5M+ active users. Experienced in event-driven architecture, high-performance REST APIs, fault-tolerant systems, production troubleshooting, and containerized deployments. Hands-on experience designing payment-processing systems with idempotency, asynchronous workflows, PostgreSQL, Redis, and secure APIs.",
+    "bio": "Backend Engineer with 3 years of experience building and operating distributed microservices using Java, Spring Boot, and Apache Kafka at Jio Platforms, serving 5M+ active users. Experienced in event-driven architecture, high-performance REST APIs, fault-tolerant systems, production troubleshooting, and containerized deployments. Hands-on experience designing payment-processing systems with idempotency, asynchronous workflows, PostgreSQL, Redis, and secure APIs.",
     "location": "Mumbai, Maharashtra",
     "company": "Jio Platforms Limited",
     "role": "Software Development Engineer I",
-    "yearsOfExperience": "2.8+",
+    "yearsOfExperience": "3",
     "email": "rohanbadgujgar2001@gmail.com",
     "phone": "+91 9075130922",
     "resumeUrl": "assets/resume.pdf",
@@ -27,11 +27,13 @@
     {
       "id": 1,
       "company": "Jio Platforms Limited",
+      "logo": "",
       "role": "Software Development Engineer I",
+      "type": "Full-time",
+      "location": "Mumbai, Maharashtra",
       "startDate": "Oct 2023",
       "endDate": "Present",
-      "location": "Mumbai, Maharashtra",
-      "type": "Full-time",
+      "current": true,
       "technologies": [
         "Java",
         "Spring Boot",
@@ -52,8 +54,7 @@
         "Diagnosed Kafka consumer lag, duplicate events, and API latency regressions using ELK/Kibana, improving system throughput by 40% and creating reusable troubleshooting runbooks.",
         "Containerized 6+ Spring Boot microservices with Docker and deployed on Kubernetes/OpenShift using rolling deployments, reducing rollback time by 60%.",
         "Implemented Resilience4j circuit breakers, retries, and rate limiting for downstream integrations to improve service resilience and prevent cascading failures."
-      ],
-      "current": true
+      ]
     }
   ],
   "skills": {
