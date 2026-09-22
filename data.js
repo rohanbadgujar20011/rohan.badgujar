@@ -1,0 +1,115 @@
+// Portfolio data — auto-loaded by index.html and admin dashboard.
+// Edit via the Admin Dashboard and use "Export" to regenerate this file.
+// This file works on file:// (no server needed).
+
+window.PORTFOLIO_DATA = {
+  "profile": {
+    "name": "Rohan Badgujar",
+    "title": "Backend Engineer | Software Development Engineer",
+    "tagline": "Building distributed systems that scale to millions of users",
+    "bio": "Backend Engineer with 2.8+ years of experience building and operating distributed microservices using Java, Spring Boot, and Apache Kafka at Jio Platforms, serving 5M+ active users. Experienced in event-driven architecture, high-performance REST APIs, fault-tolerant systems, production troubleshooting, and containerized deployments. Hands-on experience designing payment-processing systems with idempotency, asynchronous workflows, PostgreSQL, Redis, and secure APIs.",
+    "location": "Mumbai, Maharashtra",
+    "company": "Jio Platforms Limited",
+    "role": "Software Development Engineer I",
+    "yearsOfExperience": "2.8+",
+    "email": "rohanbadgujgar2001@gmail.com",
+    "phone": "+91 9075130922",
+    "resumeUrl": "assets/resume.pdf",
+    "profileImage": "assets/profile.jpg"
+  },
+  "social": {
+    "github": "https://github.com/rohanbadgujgar20011",
+    "linkedin": "https://linkedin.com/in/badgujar-rohan",
+    "leetcode": "",
+    "geeksforgeeks": "",
+    "hackerrank": "",
+    "codechef": "",
+    "email": "mailto:rohanbadgujgar2001@gmail.com",
+    "twitter": ""
+  },
+  "experience": [
+    {
+      "id": 1,
+      "company": "Jio Platforms Limited",
+      "logo": "",
+      "role": "Software Development Engineer I",
+      "type": "Full-time",
+      "location": "Mumbai, Maharashtra",
+      "startDate": "Oct 2023",
+      "endDate": "Present",
+      "current": true,
+      "technologies": ["Java", "Spring Boot", "Apache Kafka", "Redis", "PostgreSQL", "Docker", "Kubernetes", "OpenShift", "Resilience4j", "ELK Stack", "REST APIs"],
+      "description": [
+        "Engineered and maintained Spring Boot microservices using Java and REST APIs for telecom customer and product-order lifecycle workflows, supporting 5M+ active users.",
+        "Improved P95 latency by 35% (800ms → 500ms) across 8+ REST APIs through Redis cache-aside strategies, composite database indexing, and downstream call-chain optimization.",
+        "Designed Kafka-based event-driven workflows with partitioning, idempotent consumers, retries, and dead-letter queues, processing 100K+ events/day.",
+        "Diagnosed Kafka consumer lag, duplicate events, and API latency regressions using ELK/Kibana, improving system throughput by 40% and creating reusable troubleshooting runbooks.",
+        "Containerized 6+ Spring Boot microservices with Docker and deployed on Kubernetes/OpenShift using rolling deployments, reducing rollback time by 60%.",
+        "Implemented Resilience4j circuit breakers, retries, and rate limiting for downstream integrations to improve service resilience and prevent cascading failures."
+      ]
+    }
+  ],
+  "skills": {
+    "Languages": ["Java", "SQL"],
+    "Backend": ["Spring Boot", "Spring Security", "Spring Data JPA", "Hibernate", "REST APIs", "Maven"],
+    "Distributed Systems": ["Microservices", "Event-Driven Architecture", "Apache Kafka", "Consumer Groups", "Partitioning", "Idempotency", "Retries", "DLQ", "Circuit Breaker", "Distributed Locking", "System Design"],
+    "Databases & Caching": ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
+    "Cloud & DevOps": ["Docker", "Kubernetes", "OpenShift", "Azure", "CI/CD", "Git"],
+    "Observability": ["ELK Stack", "Kibana", "Prometheus", "Grafana", "Resilience4j", "Rate Limiting"],
+    "Security": ["JWT", "OAuth 2.0", "RBAC"]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "name": "Distributed Payment Processing Engine",
+      "description": "Distributed payment workflows for authorization, settlement, and refunds with idempotency controls to prevent duplicate transactions. Kafka event-driven processing with consumer groups, retry handling, and DLQ. Secured with JWT and OAuth 2.0.",
+      "image": "assets/project-images/payment-engine.png",
+      "technologies": ["Java 17", "Spring Boot", "Apache Kafka", "Redis", "PostgreSQL", "Docker"],
+      "github": "https://github.com/rohanbadgujgar20011",
+      "demo": "",
+      "featured": true,
+      "category": "Backend"
+    },
+    {
+      "id": 2,
+      "name": "Order & Inventory Management System",
+      "description": "Event-driven Order and Inventory microservices using Kafka consumer groups and idempotent consumers for reliable async communication. Features pessimistic locking, Resilience4j circuit breakers, and Redis caching for concurrent inventory updates.",
+      "image": "assets/project-images/order-inventory.png",
+      "technologies": ["Java", "Spring Boot", "Apache Kafka", "Redis", "MySQL"],
+      "github": "https://github.com/rohanbadgujgar20011",
+      "demo": "",
+      "featured": true,
+      "category": "Backend"
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "institution": "R.C. Patel Institute of Technology",
+      "degree": "B.Tech",
+      "field": "Computer Engineering",
+      "startYear": "2019",
+      "endYear": "2023",
+      "grade": "8.68 / 10.00 GPA",
+      "logo": "",
+      "location": "Shirpur, Maharashtra"
+    }
+  ],
+  "certifications": [],
+  "achievements": {
+    "leetcodeProblems": 0,
+    "githubRepos": 10,
+    "yearsExperience": 2,
+    "projectsBuilt": 10,
+    "certifications": 0,
+    "contributions": 0,
+    "usersServed": 5000000,
+    "eventsPerDay": 100000,
+    "latencyImprovement": 35,
+    "throughputImprovement": 40
+  },
+  "admin": {
+    "username": "rohan",
+    "password": "portfolio@2026"
+  }
+};

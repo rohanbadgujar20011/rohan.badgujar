@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .login-wrap {
+      width: 100%;
+      max-width: 420px;
+      padding: 24px;
+    }
+    .login-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 48px 40px;
+      box-shadow: var(--shadow-lg);
+    }
+    .login-logo {
+      font-size: 2rem;
+      font-weight: 900;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .login-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 36px;
+    }
+    .login-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .error-msg {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #f87171;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .error-msg.visible { display: block; }
+    .login-back {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .login-back:hover { color: var(--accent-1); }
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .login-wrap { position: relative; z-index: 1; }
+    .hero-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .glow-1 { width: 500px; height: 500px; background: #7c3aed; top: -150px; left: -100px; }
+    .glow-2 { width: 400px; height: 400px; background: #06b6d4; bottom: -100px; right: -50px; }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">RB</div>
+      <div class="login-title">Admin Access</div>
+      <div class="login-subtitle">Portfolio Management Dashboard</div>
+      <div class="error-msg" id="error-msg">Invalid username or password.</div>
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input type="text" id="username" class="form-input" placeholder="Enter username" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="Enter password" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px">
+          Sign In
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        </button>
+      </form>
+      <a href="../index.html" class="login-back">← Back to Portfolio</a>
+    </div>
+  </div>
+  <script>
+    // Already logged in?
+    if (sessionStorage.getItem('admin_auth') === 'true') {
+      window.location.href = 'dashboard.html';
+    }
+
+    // Credentials: loaded from data.json if served via HTTP,
+    // otherwise falls back to the values stored in localStorage
+    // (admin.js writes them there on every save).
+    async function getCredentials() {
+      // 1) Try localStorage cache (written by dashboard on save/export)
+      const cached = localStorage.getItem('admin_credentials');
+      if (cached) {
+        try { return JSON.parse(cached); } catch {}
+      }
+      // 2) Try fetching data.json (works when served via HTTP / Live Server)
+      try {
+        const res = await fetch('../data.json?' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          localStorage.setItem('admin_credentials', JSON.stringify(data.admin));
+          return data.admin;
+        }
+      } catch {}
+      // 3) Hardcoded default fallback (works with file://)
+      return { username: 'rohan', password: 'portfolio@2026' };
+    }
+
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errEl = document.getElementById('error-msg');
+      const btn = e.submitter;
+      btn.textContent = 'Signing in…';
+      btn.disabled = true;
+
+      const creds = await getCredentials();
+      if (username === creds.username && password === creds.password) {
+        sessionStorage.setItem('admin_auth', 'true');
+        localStorage.setItem('admin_auth', 'true'); // fallback for file://
+        window.location.href = 'dashboard.html';
+      } else {
+        errEl.textContent = 'Invalid username or password.';
+        errEl.classList.add('visible');
+        document.getElementById('password').value = '';
+        btn.textContent = 'Sign In';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
